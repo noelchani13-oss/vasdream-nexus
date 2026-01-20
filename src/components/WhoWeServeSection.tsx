@@ -7,33 +7,33 @@ const tabs = [
     id: 'agencies',
     icon: Briefcase,
     label: 'Travel Agencies',
-    title: 'Competitive rates and instant confirmation',
-    description: 'Access exclusive hotel rates and real-time availability for your clients. Our B2B platform provides travel agencies with the tools to compete with larger OTAs while maintaining higher margins.',
-    features: ['Instant booking confirmation', 'Competitive B2B rates', 'Dedicated account manager', 'White-label solutions'],
+    title: 'Full margin control with dedicated support',
+    description: 'Access competitive B2B rates with transparent pricing that lets you maintain healthy margins. Every agency partner gets a dedicated account manager who understands your business.',
+    features: ['Margin control tools', 'Dedicated account manager', 'White-label booking solutions', 'Competitive B2B rates'],
   },
   {
     id: 'otas',
     icon: Globe2,
     label: 'OTAs & Wholesalers',
-    title: 'High-speed XML booking for scale',
-    description: 'Built for high-volume operations, our API handles thousands of requests per second with sub-200ms response times. Scale your business without infrastructure concerns.',
-    features: ['High-throughput API', 'Sub-200ms response time', 'Bulk rate updates', 'Automated reconciliation'],
+    title: 'Volume access with seamless API connection',
+    description: 'Built for high-volume operations with robust API infrastructure. Scale your Balkan inventory without infrastructure concerns — our platform handles thousands of requests effortlessly.',
+    features: ['High-volume API access', 'Bulk rate management', 'Real-time availability', 'Automated booking flow'],
   },
   {
     id: 'corporate',
     icon: Building,
     label: 'Corporate',
-    title: 'Manage business travel with precision',
-    description: 'Streamline corporate travel management with negotiated rates, policy compliance tools, and detailed reporting for finance and HR teams.',
-    features: ['Corporate rate programs', 'Policy enforcement', 'Expense management', 'Travel analytics dashboard'],
+    title: 'Clean dashboard with special corporate rates',
+    description: 'Streamline business travel with our corporate booking platform. Access negotiated rates, manage policies, and get detailed reporting for finance teams.',
+    features: ['Corporate rate programs', 'Clean booking dashboard', 'Policy management', 'Travel expense reporting'],
   },
   {
     id: 'tech',
     icon: Code,
     label: 'Tech Integrators',
-    title: 'Clean documentation and sandbox environment',
-    description: 'Developer-first approach with comprehensive API documentation, SDKs for popular languages, and a full sandbox environment for testing.',
-    features: ['RESTful & SOAP APIs', 'Multi-language SDKs', 'Sandbox testing', '24/7 technical support'],
+    title: 'API-ready with scalable architecture',
+    description: 'Developer-first approach with comprehensive documentation and a scalable design that grows with your platform. XML and JSON support for maximum flexibility.',
+    features: ['RESTful & SOAP APIs', 'Comprehensive documentation', 'Scalable architecture', '24/7 technical support'],
   },
 ];
 
@@ -45,7 +45,7 @@ const WhoWeServeSection = () => {
   const activeContent = tabs.find((tab) => tab.id === activeTab);
 
   return (
-    <section id="solutions" className="relative py-32 overflow-hidden">
+    <section id="who-we-serve" className="relative py-32 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/20 to-background" />
 

@@ -1,6 +1,6 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { ArrowRight, Calendar, Users } from 'lucide-react';
+import { ArrowRight, Users, Compass } from 'lucide-react';
 
 const CTASection = () => {
   const ref = useRef(null);
@@ -38,13 +38,14 @@ const CTASection = () => {
           className="max-w-4xl mx-auto text-center"
         >
           <h2 className="text-4xl lg:text-6xl font-bold mb-6">
-            <span className="text-gradient">Ready to Scale Your Travel Business?</span>
+            <span className="text-gradient">Ready to Connect?</span>
           </h2>
-          <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
-            Join 500+ partners worldwide who trust VasDream for their hotel inventory needs.
+          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+            Join 500+ partners who rely on VasDream for trusted hotel supply, 
+            with instant booking and unbeatable service.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -60,8 +61,8 @@ const CTASection = () => {
               whileTap={{ scale: 0.98 }}
               className="btn-glow group w-full sm:w-auto px-8 py-4 rounded-xl glass border border-white/20 font-semibold flex items-center justify-center gap-3 hover:border-accent/50 transition-colors"
             >
-              <Calendar size={20} className="text-accent" />
-              Book a Demo
+              <Compass size={20} className="text-accent" />
+              Explore Platform
             </motion.button>
           </div>
 
@@ -70,19 +71,19 @@ const CTASection = () => {
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-16 flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground"
+            className="flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground"
           >
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-green-500" />
+              <span className="w-2 h-2 rounded-full bg-accent" />
               No setup fees
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-green-500" />
+              <span className="w-2 h-2 rounded-full bg-accent" />
               24/7 Support
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-green-500" />
-              Free API sandbox
+              <span className="w-2 h-2 rounded-full bg-accent" />
+              Multi-language (EN / AL)
             </div>
           </motion.div>
         </motion.div>

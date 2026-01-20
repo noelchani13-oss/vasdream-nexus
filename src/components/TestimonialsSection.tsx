@@ -4,25 +4,25 @@ import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 
 const testimonials = [
   {
-    quote: "VasDream's API integration transformed our booking flow. We saw a 40% increase in conversions within the first month.",
-    author: 'Maria Santos',
-    role: 'CTO, TravelNow Agency',
-    company: 'Portugal',
+    quote: "Partnering with VasDream has unlocked serious value — especially with their Albanian and Montenegrin contracts. Their team knows the market inside out.",
+    author: 'Andrej Markovic',
+    role: 'OTA Lead',
+    company: 'Slovenia',
   },
   {
-    quote: "The direct contracting through Bedbank gave us margins we couldn't find anywhere else. Game changer for our business.",
-    author: 'Ahmed Hassan',
-    role: 'CEO, Desert Tours LLC',
-    company: 'UAE',
+    quote: "The direct contracting through VasDream gave us margins we couldn't find anywhere else. Their local knowledge in the Balkans is unmatched.",
+    author: 'Maria Petrova',
+    role: 'CEO, Balkan Tours',
+    company: 'Bulgaria',
   },
   {
-    quote: "24/7 support and 99.9% uptime isn't marketing speak with VasDream — they actually deliver on their promises.",
+    quote: "24/7 support isn't just marketing with VasDream — they actually deliver. Their team has been responsive every single time we've needed them.",
     author: 'Klaus Weber',
     role: 'Operations Director, EuroTravel GmbH',
     company: 'Germany',
   },
   {
-    quote: "Seamless XML integration with our existing systems. Their technical documentation is the best I've seen in the industry.",
+    quote: "Seamless XML integration with our existing systems. Their technical documentation and support team made the onboarding process incredibly smooth.",
     author: 'Elena Kowalski',
     role: 'Lead Developer, BookingSoft',
     company: 'Poland',
@@ -30,7 +30,7 @@ const testimonials = [
 ];
 
 const partners = [
-  'TravelGateX', 'Amadeus', 'Sabre', 'Travelport', 'HRS', 'Booking.com', 'Expedia',
+  'TravelGateX', 'HotelBeds', 'Webhotelier', 'GIATA', 'Expedia', 'WBE', 'Netstorming',
 ];
 
 const TestimonialsSection = () => {
@@ -140,7 +140,7 @@ const TestimonialsSection = () => {
                 initial={{ opacity: 0 }}
                 animate={isInView ? { opacity: 1 } : {}}
                 transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                className="text-2xl font-bold text-muted-foreground/30 hover:text-muted-foreground/60 transition-colors cursor-pointer"
+                className="text-xl lg:text-2xl font-bold text-muted-foreground/30 hover:text-accent transition-colors cursor-pointer"
               >
                 {partner}
               </motion.div>

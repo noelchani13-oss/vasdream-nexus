@@ -1,28 +1,27 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Database, Lock, Sparkles, TrendingUp } from 'lucide-react';
+import { Database, Lock, TrendingUp, Building2, ArrowRight, Sparkles } from 'lucide-react';
 
 const features = [
   {
     icon: Database,
-    title: 'Direct Contracts',
-    description: 'Static & Dynamic inventory with real-time availability and pricing.',
+    title: '6,500+ Direct Contracts',
+    description: 'Albania, Montenegro, Greece & the Balkans — all directly contracted.',
   },
   {
     icon: Lock,
-    title: 'Exclusive Rates',
-    description: 'Access preferential rates unavailable on public channels.',
+    title: 'Transparent Availability',
+    description: 'Real-time rates and inventory with strong margins for your business.',
   },
   {
     icon: TrendingUp,
-    title: 'Own Your Inventory',
-    description: 'Build your hotel portfolio with our contracting platform.',
+    title: 'Distribution Flexibility',
+    description: 'Access via API integration or through our intuitive Extranet platform.',
   },
   {
-    icon: Sparkles,
-    title: 'Smart Caching',
-    description: 'Lightning-fast responses with intelligent rate caching.',
+    icon: Building2,
+    title: 'Perfect For Your Business',
+    description: 'Ideal for OTAs, DMCs, and regional wholesalers seeking quality inventory.',
   },
 ];
 
@@ -36,11 +35,16 @@ const BedbankSection = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
       <div className="absolute inset-0 grid-pattern opacity-50" />
 
-      {/* Floating orb */}
+      {/* Floating orbs */}
       <motion.div
-        animate={{ y: [-20, 20, -20] }}
-        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+        animate={{ y: [-20, 20, -20], x: [-10, 10, -10] }}
+        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
         className="absolute top-20 right-10 w-64 h-64 bg-accent/10 rounded-full blur-3xl"
+      />
+      <motion.div
+        animate={{ y: [20, -20, 20] }}
+        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute bottom-20 left-10 w-48 h-48 bg-neon-purple/15 rounded-full blur-3xl"
       />
 
       <div ref={ref} className="relative container mx-auto px-4 lg:px-8">
@@ -52,26 +56,49 @@ const BedbankSection = () => {
             transition={{ duration: 0.8 }}
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-neon-purple/30 mb-6">
-              <span className="w-2 h-2 rounded-full bg-neon-purple animate-pulse" />
-              <span className="text-xs font-mono text-neon-purple">NEW FEATURE</span>
+              <Sparkles size={14} className="text-neon-purple" />
+              <span className="text-xs font-mono text-neon-purple">NOW LIVE</span>
+              <span className="text-xs text-muted-foreground">New Feature</span>
             </div>
 
             <h2 className="text-4xl lg:text-5xl font-bold mb-6">
               <span className="text-gradient-brand">VasDream Bedbank</span>
             </h2>
 
-            <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              The engine powering your travel business. Direct contracting platform 
-              that puts you in control of your hotel inventory.
+            <p className="text-xl text-muted-foreground mb-4 leading-relaxed">
+              The only dedicated bedbank in Albania — powered by our exclusive portfolio of 
+              <span className="text-accent font-semibold"> 6,500+ directly contracted hotels</span>.
             </p>
 
-            <div className="flex items-center gap-4 font-mono text-sm">
-              <span className="px-3 py-1 rounded-md bg-accent/10 text-accent border border-accent/20">
-                99.9% Uptime
+            <p className="text-muted-foreground mb-8 leading-relaxed">
+              Whether you're an OTA scaling your Balkan inventory, a DMC seeking reliable supply, 
+              or a regional wholesaler expanding your reach — VasDream Bedbank delivers transparent 
+              availability and strong margins through API or Extranet.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-start gap-4 mb-8">
+              <button className="btn-glow group px-6 py-3 rounded-xl bg-gradient-to-r from-accent to-neon-purple text-accent-foreground font-semibold flex items-center gap-2 glow-cyan">
+                Get Started
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              </button>
+              <span className="text-sm text-muted-foreground flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-accent" />
+                Available via API & Extranet
               </span>
-              <span className="px-3 py-1 rounded-md bg-neon-purple/10 text-neon-purple border border-neon-purple/20">
-                SSL Secured
-              </span>
+            </div>
+
+            {/* Hotel CTA */}
+            <div className="glass rounded-xl p-4 border border-accent/20">
+              <p className="text-sm text-muted-foreground mb-2">
+                <span className="text-foreground font-medium">Are you a hotel?</span> Interested in listing 
+                your property with VasDream Bedbank?
+              </p>
+              <a 
+                href="#contact" 
+                className="inline-flex items-center gap-2 text-accent text-sm font-medium hover:gap-3 transition-all"
+              >
+                Start Here <ArrowRight size={14} />
+              </a>
             </div>
           </motion.div>
 
@@ -80,7 +107,7 @@ const BedbankSection = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="grid grid-cols-2 gap-4"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-4"
           >
             {features.map((feature, index) => (
               <motion.div
