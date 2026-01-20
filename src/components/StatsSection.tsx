@@ -3,10 +3,10 @@ import { useRef, useEffect, useState } from 'react';
 import { Building2, Globe, Award, Users } from 'lucide-react';
 
 const stats = [
-  { icon: Building2, value: 1000000, suffix: '+', label: 'Hotels', duration: 2 },
-  { icon: Globe, value: 190, suffix: '+', label: 'Countries', duration: 1.5 },
-  { icon: Award, value: 20, suffix: '+', label: 'Years Excellence', duration: 1 },
-  { icon: Users, value: 500, suffix: '+', label: 'API Partners', duration: 1.5 },
+  { icon: Building2, value: 6500, suffix: '+', label: 'Direct Hotel Contracts', duration: 2 },
+  { icon: Globe, value: 4, suffix: '', label: 'Core Markets', subtext: 'Albania, Montenegro, Greece, Balkans', duration: 1 },
+  { icon: Award, value: 30, suffix: '+', label: 'Years Experience', duration: 1.5 },
+  { icon: Users, value: 500, suffix: '+', label: 'Active Partners', duration: 1.5 },
 ];
 
 const AnimatedCounter = ({ 
@@ -46,11 +46,8 @@ const AnimatedCounter = ({
   }, [value, duration, isInView]);
 
   const formatNumber = (num: number) => {
-    if (num >= 1000000) {
-      return (num / 1000000).toFixed(0) + 'M';
-    }
     if (num >= 1000) {
-      return (num / 1000).toFixed(0) + 'K';
+      return num.toLocaleString();
     }
     return num.toString();
   };

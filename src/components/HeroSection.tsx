@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Zap } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 
 const HeroSection = () => {
   return (
@@ -111,9 +111,9 @@ const HeroSection = () => {
             transition={{ delay: 0.2 }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-accent/30 mb-8"
           >
-            <Zap size={14} className="text-accent" />
-            <span className="text-xs font-mono text-accent">NEW 2026</span>
-            <span className="text-xs text-muted-foreground">VasDream Bedbank Now Live</span>
+            <Sparkles size={14} className="text-accent" />
+            <span className="text-xs font-mono text-accent">SINCE 2015</span>
+            <span className="text-xs text-muted-foreground">30+ Years DMC Experience</span>
           </motion.div>
 
           {/* Main headline */}
@@ -126,29 +126,30 @@ const HeroSection = () => {
             <span className="text-gradient">Global B2B Travel Wholesaler</span>
           </motion.h1>
 
+          {/* Subheadline */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
             className="text-xl md:text-2xl text-muted-foreground font-light mb-4"
           >
-            Hotels • Transfers • Activities
+            30+ years of trust, local strength, and unbeatable availability in the Western Balkans.
           </motion.p>
 
-          {/* Sub-headline */}
+          {/* Support line */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
             className="text-base md:text-lg text-muted-foreground mb-10 max-w-2xl mx-auto"
           >
-            <span className="font-mono text-accent">XML Connectivity</span>
-            {' | '}
-            <span className="font-mono text-accent">API</span>
-            {' | '}
-            <span className="font-mono text-accent">Instant Booking</span>
+            <span className="font-mono text-accent">Direct contracts</span>
+            {' • '}
+            <span className="font-mono text-accent">Instant booking</span>
+            {' • '}
+            <span className="font-mono text-accent">24/7 support</span>
             <br />
-            <span className="mt-2 inline-block">Connecting you to 190+ countries.</span>
+            <span className="mt-2 inline-block">Built for travel agencies, OTAs, and wholesalers.</span>
           </motion.p>
 
           {/* CTA Buttons */}
@@ -159,14 +160,14 @@ const HeroSection = () => {
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <button className="btn-glow group px-8 py-4 rounded-xl bg-gradient-to-r from-accent to-neon-purple text-accent-foreground font-semibold flex items-center gap-2 glow-cyan">
-              Request Access
+              Become a Partner
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </button>
             <a
-              href="#bedbank"
+              href="#contact"
               className="px-8 py-4 rounded-xl border border-white/20 text-foreground font-medium hover:bg-white/5 transition-all flex items-center gap-2"
             >
-              Explore Bedbank
+              Ready to Connect?
             </a>
           </motion.div>
         </motion.div>

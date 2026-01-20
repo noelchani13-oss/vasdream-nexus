@@ -3,12 +3,12 @@ import { useRef } from 'react';
 import { MapPin } from 'lucide-react';
 
 const offices = [
-  { country: 'Albania', city: 'Tirana', position: { top: '38%', left: '52%' } },
-  { country: 'Kosovo', city: 'Pristina', position: { top: '36%', left: '53%' } },
-  { country: 'Bosnia', city: 'Sarajevo', position: { top: '35%', left: '50%' } },
-  { country: 'Slovenia', city: 'Ljubljana', position: { top: '32%', left: '48%' } },
-  { country: 'Austria', city: 'Vienna', position: { top: '30%', left: '49%' } },
-  { country: 'Dubai', city: 'Dubai', position: { top: '48%', left: '62%' } },
+  { country: 'Albania', city: 'Tirana', flag: '🇦🇱', isHQ: true, position: { top: '38%', left: '52%' } },
+  { country: 'Kosovo', city: 'Pristina', flag: '🇽🇰', isHQ: false, position: { top: '36%', left: '53%' } },
+  { country: 'Bosnia', city: 'Sarajevo', flag: '🇧🇦', isHQ: false, position: { top: '35%', left: '50%' } },
+  { country: 'Slovenia', city: 'Ljubljana', flag: '🇸🇮', isHQ: false, position: { top: '32%', left: '48%' } },
+  { country: 'Austria', city: 'Vienna', flag: '🇦🇹', isHQ: false, position: { top: '30%', left: '49%' } },
+  { country: 'UAE', city: 'Dubai', flag: '🇦🇪', isHQ: false, position: { top: '48%', left: '62%' } },
 ];
 
 const GlobalMapSection = () => {
@@ -127,25 +127,32 @@ const GlobalMapSection = () => {
               className="absolute -translate-x-1/2 -translate-y-1/2 group cursor-pointer"
             >
               {/* Ping animation */}
-              <span className="absolute inset-0 w-6 h-6 rounded-full bg-accent/30 animate-ping" />
+              <span className={`absolute inset-0 w-6 h-6 rounded-full animate-ping ${office.isHQ ? 'bg-neon-purple/40' : 'bg-accent/30'}`} />
               
               {/* Marker */}
-              <div className="relative w-6 h-6 rounded-full bg-accent flex items-center justify-center glow-cyan">
+              <div className={`relative w-6 h-6 rounded-full flex items-center justify-center ${office.isHQ ? 'bg-neon-purple glow-purple' : 'bg-accent glow-cyan'}`}>
                 <MapPin size={14} className="text-accent-foreground" />
               </div>
 
               {/* Tooltip */}
-              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity z-10">
                 <div className="glass rounded-lg px-3 py-2 whitespace-nowrap">
-                  <p className="font-semibold text-foreground text-sm">{office.country}</p>
-                  <p className="text-xs text-muted-foreground">{office.city}</p>
+                  <div className="flex items-center gap-2">
+                    <span className="text-lg">{office.flag}</span>
+                    <div>
+                      <p className="font-semibold text-foreground text-sm">
+                        {office.city}, {office.country}
+                        {office.isHQ && <span className="ml-1 text-xs text-neon-purple">(HQ)</span>}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Office List - Mobile */}
+        {/* Office List - Mobile & Grid View */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -158,13 +165,14 @@ const GlobalMapSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-              className="glass rounded-xl p-4 text-center"
+              className={`glass rounded-xl p-4 text-center ${office.isHQ ? 'border border-neon-purple/30' : ''}`}
             >
-              <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-3">
-                <MapPin size={18} className="text-accent" />
-              </div>
-              <h4 className="font-semibold text-foreground">{office.country}</h4>
-              <p className="text-sm text-muted-foreground">{office.city}</p>
+              <span className="text-3xl mb-3 block">{office.flag}</span>
+              <h4 className="font-semibold text-foreground">
+                {office.city}
+                {office.isHQ && <span className="ml-1 text-xs text-neon-purple">(HQ)</span>}
+              </h4>
+              <p className="text-sm text-muted-foreground">{office.country}</p>
             </motion.div>
           ))}
         </motion.div>

@@ -4,10 +4,11 @@ import { Menu, X } from 'lucide-react';
 import LoginModal from './LoginModal';
 
 const navLinks = [
-  { label: 'Bedbank', href: '#bedbank' },
+  { label: 'About', href: '#about' },
   { label: 'Solutions', href: '#solutions' },
   { label: 'Connectivity', href: '#connectivity' },
-  { label: 'Global Presence', href: '#global' },
+  { label: 'Bedbank', href: '#bedbank' },
+  { label: 'Global', href: '#global' },
   { label: 'Contact', href: '#contact' },
 ];
 
