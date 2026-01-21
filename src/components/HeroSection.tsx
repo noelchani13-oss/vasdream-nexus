@@ -1,86 +1,132 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
-
 const HeroSection = () => {
-  return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background layers */}
       <div className="absolute inset-0 bg-background" />
       <div className="absolute inset-0 grid-pattern" />
       <div className="absolute inset-0 mesh-gradient opacity-60" />
 
       {/* Animated orbs */}
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute top-1/4 left-1/4 w-96 h-96 bg-neon-purple/20 rounded-full blur-3xl"
-      />
-      <motion.div
-        animate={{
-          scale: [1.2, 1, 1.2],
-          opacity: [0.2, 0.4, 0.2],
-        }}
-        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/15 rounded-full blur-3xl"
-      />
+      <motion.div animate={{
+      scale: [1, 1.2, 1],
+      opacity: [0.3, 0.5, 0.3]
+    }} transition={{
+      duration: 8,
+      repeat: Infinity,
+      ease: 'easeInOut'
+    }} className="absolute top-1/4 left-1/4 w-96 h-96 bg-neon-purple/20 rounded-full blur-3xl" />
+      <motion.div animate={{
+      scale: [1.2, 1, 1.2],
+      opacity: [0.2, 0.4, 0.2]
+    }} transition={{
+      duration: 10,
+      repeat: Infinity,
+      ease: 'easeInOut'
+    }} className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/15 rounded-full blur-3xl" />
 
       {/* 3D Network visualization */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <svg
-          viewBox="0 0 800 600"
-          className="w-full h-full max-w-5xl opacity-30"
-        >
+        <svg viewBox="0 0 800 600" className="w-full h-full max-w-5xl opacity-30">
           {/* Connection lines */}
-          {[
-            { x1: 400, y1: 300, x2: 200, y2: 150 },
-            { x1: 400, y1: 300, x2: 600, y2: 150 },
-            { x1: 400, y1: 300, x2: 150, y2: 400 },
-            { x1: 400, y1: 300, x2: 650, y2: 400 },
-            { x1: 400, y1: 300, x2: 300, y2: 500 },
-            { x1: 400, y1: 300, x2: 500, y2: 500 },
-            { x1: 200, y1: 150, x2: 100, y2: 200 },
-            { x1: 600, y1: 150, x2: 700, y2: 200 },
-          ].map((line, i) => (
-            <motion.line
-              key={i}
-              x1={line.x1}
-              y1={line.y1}
-              x2={line.x2}
-              y2={line.y2}
-              stroke="url(#lineGradient)"
-              strokeWidth="1"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 0.6 }}
-              transition={{ duration: 2, delay: i * 0.2 }}
-            />
-          ))}
+          {[{
+          x1: 400,
+          y1: 300,
+          x2: 200,
+          y2: 150
+        }, {
+          x1: 400,
+          y1: 300,
+          x2: 600,
+          y2: 150
+        }, {
+          x1: 400,
+          y1: 300,
+          x2: 150,
+          y2: 400
+        }, {
+          x1: 400,
+          y1: 300,
+          x2: 650,
+          y2: 400
+        }, {
+          x1: 400,
+          y1: 300,
+          x2: 300,
+          y2: 500
+        }, {
+          x1: 400,
+          y1: 300,
+          x2: 500,
+          y2: 500
+        }, {
+          x1: 200,
+          y1: 150,
+          x2: 100,
+          y2: 200
+        }, {
+          x1: 600,
+          y1: 150,
+          x2: 700,
+          y2: 200
+        }].map((line, i) => <motion.line key={i} x1={line.x1} y1={line.y1} x2={line.x2} y2={line.y2} stroke="url(#lineGradient)" strokeWidth="1" initial={{
+          pathLength: 0,
+          opacity: 0
+        }} animate={{
+          pathLength: 1,
+          opacity: 0.6
+        }} transition={{
+          duration: 2,
+          delay: i * 0.2
+        }} />)}
 
           {/* Nodes */}
-          {[
-            { cx: 400, cy: 300, r: 8 },
-            { cx: 200, cy: 150, r: 5 },
-            { cx: 600, cy: 150, r: 5 },
-            { cx: 150, cy: 400, r: 4 },
-            { cx: 650, cy: 400, r: 4 },
-            { cx: 300, cy: 500, r: 3 },
-            { cx: 500, cy: 500, r: 3 },
-            { cx: 100, cy: 200, r: 3 },
-            { cx: 700, cy: 200, r: 3 },
-          ].map((node, i) => (
-            <motion.circle
-              key={i}
-              cx={node.cx}
-              cy={node.cy}
-              r={node.r}
-              fill="url(#nodeGradient)"
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.5, delay: 1 + i * 0.1 }}
-            />
-          ))}
+          {[{
+          cx: 400,
+          cy: 300,
+          r: 8
+        }, {
+          cx: 200,
+          cy: 150,
+          r: 5
+        }, {
+          cx: 600,
+          cy: 150,
+          r: 5
+        }, {
+          cx: 150,
+          cy: 400,
+          r: 4
+        }, {
+          cx: 650,
+          cy: 400,
+          r: 4
+        }, {
+          cx: 300,
+          cy: 500,
+          r: 3
+        }, {
+          cx: 500,
+          cy: 500,
+          r: 3
+        }, {
+          cx: 100,
+          cy: 200,
+          r: 3
+        }, {
+          cx: 700,
+          cy: 200,
+          r: 3
+        }].map((node, i) => <motion.circle key={i} cx={node.cx} cy={node.cy} r={node.r} fill="url(#nodeGradient)" initial={{
+          scale: 0,
+          opacity: 0
+        }} animate={{
+          scale: 1,
+          opacity: 1
+        }} transition={{
+          duration: 0.5,
+          delay: 1 + i * 0.1
+        }} />)}
 
           {/* Gradient definitions */}
           <defs>
@@ -98,102 +144,98 @@ const HeroSection = () => {
 
       {/* Content */}
       <div className="relative container mx-auto px-4 lg:px-8 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-4xl mx-auto"
-        >
+        <motion.div initial={{
+        opacity: 0,
+        y: 30
+      }} animate={{
+        opacity: 1,
+        y: 0
+      }} transition={{
+        duration: 0.8
+      }} className="max-w-4xl mx-auto">
           {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-accent/30 mb-8"
-          >
+          <motion.div initial={{
+          opacity: 0,
+          scale: 0.9
+        }} animate={{
+          opacity: 1,
+          scale: 1
+        }} transition={{
+          delay: 0.2
+        }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-accent/30 mb-8">
             <Sparkles size={14} className="text-accent" />
             <span className="text-xs font-mono text-accent">SINCE 2015</span>
-            <span className="text-xs text-muted-foreground">30+ Years DMC Experience</span>
+            <span className="text-xs text-muted-foreground">30+ Years Travel Group Experience</span>
           </motion.div>
 
           {/* Main headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight mb-6"
-          >
+          <motion.h1 initial={{
+          opacity: 0,
+          y: 20
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          delay: 0.3,
+          duration: 0.8
+        }} className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight mb-6">
             <span className="text-gradient">Global B2B Travel Wholesaler</span>
           </motion.h1>
 
           {/* Subheadline */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-xl md:text-2xl text-muted-foreground font-light mb-4"
-          >
-            30+ years of trust, local strength, and unbeatable availability in the Western Balkans.
-          </motion.p>
+          <motion.p initial={{
+          opacity: 0,
+          y: 20
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          delay: 0.4,
+          duration: 0.8
+        }} className="text-xl md:text-2xl text-muted-foreground font-light mb-4">30+ years of trust, local strength, and unbeatable availability in the Balkans.</motion.p>
 
           {/* Support line */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-base md:text-lg text-muted-foreground mb-10 max-w-2xl mx-auto"
-          >
+          <motion.p initial={{
+          opacity: 0,
+          y: 20
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          delay: 0.5,
+          duration: 0.8
+        }} className="text-base md:text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
             <span className="font-mono text-accent">Direct contracts</span>
             {' • '}
             <span className="font-mono text-accent">Instant booking</span>
             {' • '}
             <span className="font-mono text-accent">24/7 support</span>
             <br />
-            <span className="mt-2 inline-block">Built for travel agencies, OTAs, and wholesalers.</span>
+            <span className="mt-2 inline-block">Built for Travel Agencies, OTAs and DMCs.</span>
           </motion.p>
 
           {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
-          >
+          <motion.div initial={{
+          opacity: 0,
+          y: 20
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          delay: 0.6,
+          duration: 0.8
+        }} className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button className="btn-glow group px-8 py-4 rounded-xl bg-gradient-to-r from-accent to-neon-purple text-accent-foreground font-semibold flex items-center gap-2 glow-cyan">
               Become a Partner
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </button>
-            <a
-              href="#contact"
-              className="px-8 py-4 rounded-xl border border-white/20 text-foreground font-medium hover:bg-white/5 transition-all flex items-center gap-2"
-            >
-              Ready to Connect?
-            </a>
+            
           </motion.div>
         </motion.div>
 
         {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="w-6 h-10 rounded-full border-2 border-white/20 flex items-start justify-center p-2"
-          >
-            <motion.div
-              animate={{ opacity: [1, 0.5, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="w-1 h-2 rounded-full bg-accent"
-            />
-          </motion.div>
-        </motion.div>
+        
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default HeroSection;
