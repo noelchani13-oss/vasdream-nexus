@@ -29,9 +29,7 @@ const testimonials = [
   },
 ];
 
-const partners = [
-  'TravelGateX', 'HotelBeds', 'Webhotelier', 'GIATA', 'Expedia', 'WBE', 'Netstorming',
-];
+// Partners moved to GlobalMapSection
 
 const TestimonialsSection = () => {
   const ref = useRef(null);
@@ -123,30 +121,6 @@ const TestimonialsSection = () => {
           </div>
         </motion.div>
 
-        {/* Trusted By */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center"
-        >
-          <p className="text-sm font-medium text-muted-foreground mb-8 uppercase tracking-wider">
-            Trusted By Industry Leaders
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-8 lg:gap-16">
-            {partners.map((partner, index) => (
-              <motion.div
-                key={partner}
-                initial={{ opacity: 0 }}
-                animate={isInView ? { opacity: 1 } : {}}
-                transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                className="text-xl lg:text-2xl font-bold text-muted-foreground/30 hover:text-accent transition-colors cursor-pointer"
-              >
-                {partner}
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   );

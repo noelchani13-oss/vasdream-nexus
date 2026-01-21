@@ -41,7 +41,7 @@ const CTASection = () => {
             <span className="text-gradient">Ready to Connect?</span>
           </h2>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Join 500+ partners who rely on VasDream for trusted hotel supply, 
+            Join 1000+ partners who rely on VasDream for trusted hotel supply, 
             with instant booking and unbeatable service.
           </p>
 
