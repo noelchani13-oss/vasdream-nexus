@@ -1,5 +1,6 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const offices = [
   { country: 'Albania', city: 'Tirana', flag: '🇦🇱', isHQ: true },
@@ -26,6 +27,7 @@ const partners = [
 const GlobalMapSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const { t } = useLanguage();
 
   return (
     <section id="global" className="relative py-32 overflow-hidden">
@@ -41,10 +43,10 @@ const GlobalMapSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-            <span className="text-gradient">Local Presence, Global Reach</span>
+            <span className="text-gradient">{t('global.title')}</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Strategic offices across Europe and the Middle East
+            {t('global.description')}
           </p>
         </motion.div>
 
@@ -69,7 +71,7 @@ const GlobalMapSection = () => {
               <h4 className="font-semibold text-foreground text-sm">
                 {office.city}
                 {office.isHQ && (
-                  <span className="ml-1 text-xs text-neon-purple">(HQ)</span>
+                  <span className="ml-1 text-xs text-neon-purple">({t('global.headquarters')})</span>
                 )}
               </h4>
               <p className="text-xs text-muted-foreground mt-1">{office.country}</p>
@@ -85,7 +87,7 @@ const GlobalMapSection = () => {
           className="text-center"
         >
           <p className="text-sm font-medium text-muted-foreground mb-8 uppercase tracking-wider">
-            Trusted By Industry Leaders
+            {t('global.trustedBy')}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-10">
             {partners.map((partner, index) => (
@@ -105,7 +107,7 @@ const GlobalMapSection = () => {
               transition={{ duration: 0.5, delay: 1.1 }}
               className="text-sm text-muted-foreground italic"
             >
-              and many more
+              {t('global.andMore')}
             </motion.span>
           </div>
         </motion.div>

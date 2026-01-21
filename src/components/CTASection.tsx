@@ -1,10 +1,12 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { ArrowRight, Users, Compass } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const CTASection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const { t } = useLanguage();
 
   return (
     <section id="contact" className="relative py-32 overflow-hidden">
@@ -38,11 +40,10 @@ const CTASection = () => {
           className="max-w-4xl mx-auto text-center"
         >
           <h2 className="text-4xl lg:text-6xl font-bold mb-6">
-            <span className="text-gradient">Ready to Connect?</span>
+            <span className="text-gradient">{t('cta.title')}</span>
           </h2>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Join 1000+ partners who rely on VasDream for trusted hotel supply, 
-            with instant booking and unbeatable service.
+            {t('cta.description')}
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
@@ -52,7 +53,7 @@ const CTASection = () => {
               className="btn-glow group w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-accent to-neon-purple text-accent-foreground font-semibold flex items-center justify-center gap-3 glow-cyan"
             >
               <Users size={20} />
-              Become a Partner
+              {t('cta.becomePartner')}
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </motion.button>
 
@@ -62,7 +63,7 @@ const CTASection = () => {
               className="btn-glow group w-full sm:w-auto px-8 py-4 rounded-xl glass border border-white/20 font-semibold flex items-center justify-center gap-3 hover:border-accent/50 transition-colors"
             >
               <Compass size={20} className="text-accent" />
-              Explore Platform
+              {t('cta.explorePlatform')}
             </motion.button>
           </div>
 
@@ -75,15 +76,15 @@ const CTASection = () => {
           >
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-accent" />
-              No setup fees
+              {t('cta.feature1')}
             </div>
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-accent" />
-              24/7 Support
+              {t('cta.feature2')}
             </div>
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-accent" />
-              Multi-language (EN / AL)
+              {t('cta.feature3')}
             </div>
           </motion.div>
         </motion.div>

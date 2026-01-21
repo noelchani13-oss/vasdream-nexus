@@ -1,6 +1,10 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
+
 const HeroSection = () => {
+  const { t } = useLanguage();
+  
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background layers */}
       <div className="absolute inset-0 bg-background" />
@@ -179,7 +183,7 @@ const HeroSection = () => {
           delay: 0.3,
           duration: 0.8
         }} className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight mb-6">
-            <span className="text-gradient">Global B2B Travel Wholesaler</span>
+            <span className="text-gradient">{t('hero.headline')}</span>
           </motion.h1>
 
           {/* Subheadline */}
@@ -192,7 +196,7 @@ const HeroSection = () => {
         }} transition={{
           delay: 0.4,
           duration: 0.8
-        }} className="text-xl md:text-2xl text-muted-foreground font-light mb-4">30+ years of trust, local strength, and unbeatable availability in the Balkans.</motion.p>
+        }} className="text-xl md:text-2xl text-muted-foreground font-light mb-4">{t('hero.subheadline')}</motion.p>
 
           {/* Support line */}
           <motion.p initial={{
@@ -226,7 +230,7 @@ const HeroSection = () => {
           duration: 0.8
         }} className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button className="btn-glow group px-8 py-4 rounded-xl bg-gradient-to-r from-accent to-neon-purple text-accent-foreground font-semibold flex items-center gap-2 glow-cyan">
-              Become a Partner
+              {t('hero.becomePartner')}
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </button>
             

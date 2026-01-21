@@ -2,20 +2,21 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import LoginModal from './LoginModal';
-
-const navLinks = [
-  { label: 'About', href: '#about' },
-  { label: 'Solutions', href: '#solutions' },
-  { label: 'Connectivity', href: '#connectivity' },
-  { label: 'Bedbank', href: '#bedbank' },
-  { label: 'Global', href: '#global' },
-  { label: 'Contact', href: '#contact' },
-];
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
-  const [language, setLanguage] = useState<'EN' | 'AL'>('EN');
+  const { language, setLanguage, t } = useLanguage();
+
+  const navLinks = [
+    { label: t('nav.about'), href: '#about' },
+    { label: t('nav.solutions'), href: '#solutions' },
+    { label: t('nav.connectivity'), href: '#connectivity' },
+    { label: t('nav.bedbank'), href: '#bedbank' },
+    { label: t('nav.global'), href: '#global' },
+    { label: t('nav.contact'), href: '#contact' },
+  ];
 
   return (
     <>
@@ -29,7 +30,7 @@ const Navbar = () => {
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
             <a href="#" className="flex items-center gap-2">
-              <span className="text-2xl font-bold tracking-tight text-gradient-brand">
+              <span className="text-2xl font-bold tracking-tight text-foreground">
                 VASDREAM
               </span>
             </a>
@@ -79,7 +80,7 @@ const Navbar = () => {
                 onClick={() => setIsLoginOpen(true)}
                 className="btn-glow px-5 py-2.5 rounded-lg bg-gradient-to-r from-neon-cyan/20 to-neon-purple/20 border border-accent/50 text-accent font-medium text-sm"
               >
-                Partner Login
+                {t('nav.partnerLogin')}
               </button>
             </div>
 
@@ -142,7 +143,7 @@ const Navbar = () => {
                     }}
                     className="btn-glow w-full py-3 rounded-lg bg-gradient-to-r from-neon-cyan/20 to-neon-purple/20 border border-accent/50 text-accent font-medium"
                   >
-                    Partner Login
+                    {t('nav.partnerLogin')}
                   </button>
                 </div>
               </div>
