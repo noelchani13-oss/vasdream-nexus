@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Twitter, Mail, Phone, MapPin } from 'lucide-react';
+import { Linkedin, Instagram, Mail, MapPin } from 'lucide-react';
 
 const footerLinks = {
   products: [
@@ -15,7 +15,7 @@ const footerLinks = {
     { label: 'Status Page', href: '#' },
   ],
   company: [
-    { label: 'About Us', href: '#' },
+    { label: 'About Us', href: '#about' },
     { label: 'Careers', href: '#' },
     { label: 'Press', href: '#' },
     { label: 'Contact', href: '#contact' },
@@ -29,9 +29,8 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { icon: Linkedin, href: '#', label: 'LinkedIn' },
-  { icon: Twitter, href: '#', label: 'Twitter' },
-  { icon: Github, href: '#', label: 'GitHub' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/company/vasdream/', label: 'LinkedIn' },
+  { icon: Instagram, href: 'https://www.instagram.com/vasdreamplatform/?hl=en', label: 'Instagram' },
 ];
 
 const Footer = () => {
@@ -53,23 +52,36 @@ const Footer = () => {
             >
               <span className="text-2xl font-bold text-gradient-brand">VASDREAM</span>
               <p className="mt-4 text-sm text-muted-foreground max-w-xs">
-                Global B2B Travel Wholesaler. Connecting travel businesses to 1M+ hotels 
-                across 190+ countries with cutting-edge API technology.
+                Connecting travel businesses to 3M+ hotels across 190+ countries with cutting-edge API technology.
               </p>
-              
+
               {/* Contact Info */}
-              <div className="mt-6 space-y-2">
-                <a href="mailto:info@vasdream.com" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  <Mail size={14} className="text-accent" />
-                  info@vasdream.com
-                </a>
-                <a href="tel:+355123456789" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  <Phone size={14} className="text-accent" />
-                  +355 123 456 789
-                </a>
-                <p className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <MapPin size={14} className="text-accent" />
-                  Tirana, Albania
+              <div className="mt-6 space-y-3">
+                <div className="space-y-1">
+                  <p className="text-xs text-muted-foreground uppercase tracking-wide">Travel Agencies</p>
+                  <a
+                    href="mailto:b2b@vasdream.com"
+                    className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    <Mail size={14} className="text-accent" />
+                    b2b@vasdream.com
+                  </a>
+                </div>
+                <div className="space-y-1">
+                  <p className="text-xs text-muted-foreground uppercase tracking-wide">
+                    OTAs, DMCs, Tour Operators & Tech Platforms
+                  </p>
+                  <a
+                    href="mailto:api@vasdream.com"
+                    className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    <Mail size={14} className="text-accent" />
+                    api@vasdream.com
+                  </a>
+                </div>
+                <p className="flex items-start gap-2 text-sm text-muted-foreground">
+                  <MapPin size={14} className="text-accent mt-0.5 flex-shrink-0" />
+                  Rruga Dervish Shaba, Tirana, Albania, 1019
                 </p>
               </div>
 
@@ -79,6 +91,8 @@ const Footer = () => {
                   <a
                     key={social.label}
                     href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={social.label}
                     className="w-10 h-10 rounded-lg glass flex items-center justify-center text-muted-foreground hover:text-accent hover:border-accent/30 transition-all"
                   >
@@ -121,13 +135,11 @@ const Footer = () => {
             <p className="text-sm text-muted-foreground">
               © {new Date().getFullYear()} VasDream. All rights reserved.
             </p>
-            
+
             {/* API Status */}
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              <span className="text-xs font-mono text-muted-foreground">
-                API Status: Operational
-              </span>
+              <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+              <span className="text-xs font-mono text-muted-foreground">API Status: Operational</span>
             </div>
           </div>
         </div>

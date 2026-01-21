@@ -11,8 +11,8 @@ const highlights = [{
   description: 'Backed by destination management expertise'
 }, {
   icon: Building2,
-  title: '6,500+ Direct Contracts',
-  description: 'Albania, Montenegro, Greece & Balkan Peninsula'
+  title: '3M+ Hotels',
+  description: 'Worldwide Inventory and availability'
 }, {
   icon: Handshake,
   title: 'Known & Respected',
