@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Linkedin, Instagram, Mail, MapPin, Send } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import vasdreamLogo from '@/assets/logos/vasdream-logo.svg';
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -35,7 +36,7 @@ const Footer = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <span className="text-2xl font-bold text-foreground">VASDREAM</span>
+              <img src={vasdreamLogo} alt="VasDream" className="h-12 w-auto mb-4" />
               <p className="mt-4 text-sm text-muted-foreground max-w-md">
                 {t('footer.description')}
               </p>
@@ -133,7 +134,7 @@ const Footer = () => {
           >
             <h4 className="font-semibold text-foreground mb-4">{t('footer.newsletter')}</h4>
             <p className="text-sm text-muted-foreground mb-4">
-              Stay updated with the latest news and offers.
+              {t('footer.newsletterDesc')}
             </p>
             <form onSubmit={handleNewsletterSubmit} className="space-y-3">
               <input

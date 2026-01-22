@@ -1,6 +1,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const testimonials = [
   {
@@ -29,12 +30,11 @@ const testimonials = [
   },
 ];
 
-// Partners moved to GlobalMapSection
-
 const TestimonialsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [activeIndex, setActiveIndex] = useState(0);
+  const { t } = useLanguage();
 
   const nextTestimonial = () => {
     setActiveIndex((prev) => (prev + 1) % testimonials.length);
@@ -59,7 +59,7 @@ const TestimonialsSection = () => {
         >
           <div className="text-center mb-12">
             <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-              <span className="text-gradient">What Partners Say</span>
+              <span className="text-gradient">{t('testimonials.title')}</span>
             </h2>
           </div>
 
@@ -120,7 +120,6 @@ const TestimonialsSection = () => {
             </div>
           </div>
         </motion.div>
-
       </div>
     </section>
   );

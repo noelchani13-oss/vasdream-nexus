@@ -1,36 +1,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { Database, Lock, TrendingUp, Building2, ArrowRight, Sparkles, X, CheckCircle2, Globe, Users, Percent } from 'lucide-react';
-
-const features = [
-  {
-    icon: Database,
-    title: '6,500+ Direct Contracts',
-    description: 'Albania, Montenegro, Greece & the Balkans — all directly contracted.',
-  },
-  {
-    icon: Lock,
-    title: 'Transparent Availability',
-    description: 'Real-time rates and inventory with strong margins for your business.',
-  },
-  {
-    icon: TrendingUp,
-    title: 'Distribution Flexibility',
-    description: 'Access via API integration or through our intuitive Extranet platform.',
-  },
-  {
-    icon: Building2,
-    title: 'Perfect For Your Business',
-    description: 'Ideal for OTAs, DMCs, and regional wholesalers seeking quality inventory.',
-  },
-];
-
-const hotelBenefits = [
-  { icon: Globe, text: 'Global distribution to 1000+ B2B partners worldwide' },
-  { icon: Users, text: 'Access to travel agencies, OTAs, and tour operators' },
-  { icon: Percent, text: 'Competitive commission structures with transparent pricing' },
-  { icon: CheckCircle2, text: 'Dedicated account management and 24/7 support' },
-];
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const BedbankSection = () => {
   const ref = useRef(null);
@@ -44,10 +15,24 @@ const BedbankSection = () => {
     location: '',
     rooms: '',
   });
+  const { t } = useLanguage();
+
+  const features = [
+    { icon: Database, title: t('bedbank.feature1.title'), description: t('bedbank.feature1.desc') },
+    { icon: Lock, title: t('bedbank.feature2.title'), description: t('bedbank.feature2.desc') },
+    { icon: TrendingUp, title: t('bedbank.feature3.title'), description: t('bedbank.feature3.desc') },
+    { icon: Building2, title: t('bedbank.feature4.title'), description: t('bedbank.feature4.desc') },
+  ];
+
+  const hotelBenefits = [
+    { icon: Globe, text: t('bedbank.hotelBenefit1') },
+    { icon: Users, text: t('bedbank.hotelBenefit2') },
+    { icon: Percent, text: t('bedbank.hotelBenefit3') },
+    { icon: CheckCircle2, text: t('bedbank.hotelBenefit4') },
+  ];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Form submission logic would go here
     alert('Thank you! Our representatives will contact you shortly.');
     setShowHotelForm(false);
     setFormData({ hotelName: '', contactName: '', email: '', phone: '', location: '', rooms: '' });
@@ -81,33 +66,31 @@ const BedbankSection = () => {
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-neon-purple/30 mb-6">
               <Sparkles size={14} className="text-neon-purple" />
-              <span className="text-xs font-mono text-neon-purple">NOW LIVE</span>
-              <span className="text-xs text-muted-foreground">New Feature</span>
+              <span className="text-xs font-mono text-neon-purple">{t('bedbank.badge')}</span>
+              <span className="text-xs text-muted-foreground">{t('bedbank.badgeText')}</span>
             </div>
 
             <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-              <span className="text-foreground">VasDream Bedbank</span>
+              <span className="text-foreground">{t('bedbank.title')}</span>
             </h2>
 
             <p className="text-xl text-muted-foreground mb-4 leading-relaxed">
-              The only dedicated bedbank in Albania — powered by our exclusive portfolio of
-              <span className="text-accent font-semibold"> 6,500+ directly contracted hotels</span>.
+              {t('bedbank.subtitle')}
+              <span className="text-accent font-semibold"> {t('bedbank.subtitleHighlight')}</span>.
             </p>
 
             <p className="text-muted-foreground mb-8 leading-relaxed">
-              Whether you're an OTA scaling your Balkan inventory, a DMC seeking reliable supply, or a
-              regional wholesaler expanding your reach, VasDream Bedbank delivers transparent availability
-              and strong margins through API or Extranet.
+              {t('bedbank.description')}
             </p>
 
             <div className="flex flex-col sm:flex-row items-start gap-4 mb-8">
               <button className="btn-glow group px-6 py-3 rounded-xl bg-gradient-to-r from-accent to-neon-purple text-accent-foreground font-semibold flex items-center gap-2 glow-cyan">
-                Get Started
+                {t('bedbank.getStarted')}
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </button>
               <span className="text-sm text-muted-foreground flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-accent" />
-                Available via API & Extranet
+                {t('bedbank.availableVia')}
               </span>
             </div>
 
@@ -115,11 +98,10 @@ const BedbankSection = () => {
             <div className="glass rounded-xl p-6 border border-accent/20">
               <h3 className="text-lg font-semibold text-foreground mb-3 flex items-center gap-2">
                 <Building2 size={20} className="text-accent" />
-                Are you a hotel?
+                {t('bedbank.hotelTitle')}
               </h3>
               <p className="text-sm text-muted-foreground mb-4">
-                Join our distribution network and unlock access to a global network of travel buyers. 
-                List your property with VasDream Bedbank and benefit from:
+                {t('bedbank.hotelDesc')}
               </p>
               <ul className="space-y-2 mb-4">
                 {hotelBenefits.map((benefit) => (
@@ -133,7 +115,7 @@ const BedbankSection = () => {
                 onClick={() => setShowHotelForm(true)}
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-accent/10 border border-accent/30 text-accent text-sm font-medium hover:bg-accent/20 transition-colors"
               >
-                Start Here <ArrowRight size={14} />
+                {t('bedbank.startHere')} <ArrowRight size={14} />
               </button>
             </div>
           </motion.div>
@@ -187,7 +169,7 @@ const BedbankSection = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-xl font-bold text-foreground">List Your Hotel</h3>
+              <h3 className="text-xl font-bold text-foreground">{t('bedbank.formTitle')}</h3>
               <button
                 onClick={() => setShowHotelForm(false)}
                 className="p-2 rounded-lg hover:bg-white/10 transition-colors"
@@ -197,76 +179,69 @@ const BedbankSection = () => {
             </div>
 
             <p className="text-sm text-muted-foreground mb-6">
-              Fill in your details and our representatives will contact you within 24 hours to discuss 
-              partnership opportunities.
+              {t('bedbank.formDesc')}
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-foreground mb-1">Hotel Name *</label>
+                <label className="block text-sm font-medium text-foreground mb-1">{t('bedbank.formHotelName')} *</label>
                 <input
                   type="text"
                   required
                   value={formData.hotelName}
                   onChange={(e) => setFormData({ ...formData, hotelName: e.target.value })}
                   className="w-full px-4 py-2 rounded-lg bg-muted border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent/50"
-                  placeholder="Enter hotel name"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-foreground mb-1">Contact Name *</label>
+                <label className="block text-sm font-medium text-foreground mb-1">{t('bedbank.formContactName')} *</label>
                 <input
                   type="text"
                   required
                   value={formData.contactName}
                   onChange={(e) => setFormData({ ...formData, contactName: e.target.value })}
                   className="w-full px-4 py-2 rounded-lg bg-muted border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent/50"
-                  placeholder="Your full name"
                 />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-1">Email *</label>
+                  <label className="block text-sm font-medium text-foreground mb-1">{t('bedbank.formEmail')} *</label>
                   <input
                     type="email"
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="w-full px-4 py-2 rounded-lg bg-muted border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent/50"
-                    placeholder="email@hotel.com"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-1">Phone</label>
+                  <label className="block text-sm font-medium text-foreground mb-1">{t('bedbank.formPhone')}</label>
                   <input
                     type="tel"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     className="w-full px-4 py-2 rounded-lg bg-muted border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent/50"
-                    placeholder="+355..."
                   />
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-1">Location *</label>
+                  <label className="block text-sm font-medium text-foreground mb-1">{t('bedbank.formLocation')} *</label>
                   <input
                     type="text"
                     required
                     value={formData.location}
                     onChange={(e) => setFormData({ ...formData, location: e.target.value })}
                     className="w-full px-4 py-2 rounded-lg bg-muted border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent/50"
-                    placeholder="City, Country"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-1">Number of Rooms</label>
+                  <label className="block text-sm font-medium text-foreground mb-1">{t('bedbank.formRooms')}</label>
                   <input
                     type="number"
                     value={formData.rooms}
                     onChange={(e) => setFormData({ ...formData, rooms: e.target.value })}
                     className="w-full px-4 py-2 rounded-lg bg-muted border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent/50"
-                    placeholder="e.g., 50"
                   />
                 </div>
               </div>
@@ -274,7 +249,7 @@ const BedbankSection = () => {
                 type="submit"
                 className="w-full btn-glow py-3 rounded-xl bg-gradient-to-r from-accent to-neon-purple text-accent-foreground font-semibold"
               >
-                Submit Request
+                {t('bedbank.formSubmit')}
               </button>
             </form>
           </motion.div>

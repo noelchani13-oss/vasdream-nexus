@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import LoginModal from './LoginModal';
 import { useLanguage } from '@/contexts/LanguageContext';
+import vasdreamLogo from '@/assets/logos/vasdream-logo.svg';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -30,9 +31,7 @@ const Navbar = () => {
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
             <a href="#" className="flex items-center gap-2">
-              <span className="text-2xl font-bold tracking-tight text-foreground">
-                VASDREAM
-              </span>
+              <img src={vasdreamLogo} alt="VasDream" className="h-10 w-auto" />
             </a>
 
             {/* Desktop Navigation */}
