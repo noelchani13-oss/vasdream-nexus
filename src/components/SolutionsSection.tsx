@@ -12,50 +12,52 @@ import {
   Users,
   Briefcase
 } from 'lucide-react';
-
-const solutions = [
-  {
-    icon: FileText,
-    title: 'Direct Contracting',
-    description: 'Access our portfolio of 6,500+ directly contracted hotels with exclusive rates.',
-  },
-  {
-    icon: Globe,
-    title: 'Extranet Access',
-    description: 'Manage bookings, view availability, and control inventory through our intuitive platform.',
-  },
-  {
-    icon: Code2,
-    title: 'XML / API Integration',
-    description: 'Seamless technical integration with your existing systems via XML or JSON API.',
-  },
-  {
-    icon: BadgePercent,
-    title: 'Exclusive Rates',
-    description: 'Preferential pricing unavailable on public channels, maximizing your margins.',
-  },
-  {
-    icon: Headphones,
-    title: '24/7 Multilingual Support',
-    description: 'Round-the-clock assistance in multiple languages whenever you need it.',
-  },
-  {
-    icon: Filter,
-    title: 'Advanced Filtering',
-    description: 'Search and filter by destination, category, board type, and more.',
-  },
-];
-
-const clientTypes = [
-  { icon: Plane, label: 'OTAs' },
-  { icon: Building2, label: 'DMCs' },
-  { icon: Users, label: 'Agencies' },
-  { icon: Briefcase, label: 'Corporate' },
-];
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const SolutionsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const { t } = useLanguage();
+
+  const solutions = [
+    {
+      icon: FileText,
+      title: t('solutions.directContracting.title'),
+      description: t('solutions.directContracting.description'),
+    },
+    {
+      icon: Globe,
+      title: t('solutions.extranetAccess.title'),
+      description: t('solutions.extranetAccess.description'),
+    },
+    {
+      icon: Code2,
+      title: t('solutions.apiIntegration.title'),
+      description: t('solutions.apiIntegration.description'),
+    },
+    {
+      icon: BadgePercent,
+      title: t('solutions.exclusiveRates.title'),
+      description: t('solutions.exclusiveRates.description'),
+    },
+    {
+      icon: Headphones,
+      title: t('solutions.support.title'),
+      description: t('solutions.support.description'),
+    },
+    {
+      icon: Filter,
+      title: t('solutions.advancedFilters.title'),
+      description: t('solutions.advancedFilters.description'),
+    },
+  ];
+
+  const clientTypes = [
+    { icon: Plane, label: t('solutions.otas') },
+    { icon: Building2, label: t('solutions.dmcs') },
+    { icon: Users, label: t('solutions.agencies') },
+    { icon: Briefcase, label: t('solutions.corporate') },
+  ];
 
   return (
     <section id="solutions" className="relative py-32 overflow-hidden">
@@ -72,10 +74,10 @@ const SolutionsSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-            <span className="text-gradient">Our Solutions</span>
+            <span className="text-gradient">{t('solutions.title')}</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Everything you need to power your travel business with the Western Balkans' premier hotel inventory
+            {t('solutions.description')}
           </p>
         </motion.div>
 
@@ -118,7 +120,7 @@ const SolutionsSection = () => {
           className="glass rounded-2xl p-8 text-center"
         >
           <p className="text-sm font-mono text-accent mb-6 uppercase tracking-wider">
-            Serving Travel Professionals Worldwide
+            {t('solutions.serving')}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-8">
             {clientTypes.map((client, index) => (

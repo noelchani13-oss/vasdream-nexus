@@ -168,8 +168,7 @@ const HeroSection = () => {
           delay: 0.2
         }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-accent/30 mb-8">
             <Sparkles size={14} className="text-accent" />
-            <span className="text-xs font-mono text-accent">SINCE 2015</span>
-            <span className="text-xs text-muted-foreground">30+ Years Travel Group Experience</span>
+            <span className="text-xs text-muted-foreground">{t('hero.experience')}</span>
           </motion.div>
 
           {/* Main headline */}
@@ -209,13 +208,9 @@ const HeroSection = () => {
           delay: 0.5,
           duration: 0.8
         }} className="text-base md:text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
-            <span className="font-mono text-accent">Direct contracts</span>
-            {' • '}
-            <span className="font-mono text-accent">Instant booking</span>
-            {' • '}
-            <span className="font-mono text-accent">24/7 support</span>
+            <span className="font-mono text-accent">{t('hero.features')}</span>
             <br />
-            <span className="mt-2 inline-block">Built for Travel Agencies, OTAs and DMCs.</span>
+            <span className="mt-2 inline-block">{t('hero.builtFor')}</span>
           </motion.p>
 
           {/* CTA Buttons */}

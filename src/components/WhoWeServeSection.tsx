@@ -1,46 +1,48 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { Briefcase, Globe2, Building, Code } from 'lucide-react';
-
-const tabs = [
-  {
-    id: 'agencies',
-    icon: Briefcase,
-    label: 'Travel Agencies',
-    title: 'Full margin control with dedicated support',
-    description: 'Access competitive B2B rates with transparent pricing that lets you maintain healthy margins. Every agency partner gets a dedicated account manager who understands your business.',
-    features: ['Margin control tools', 'Dedicated account manager', 'White-label booking solutions', 'Competitive B2B rates'],
-  },
-  {
-    id: 'otas',
-    icon: Globe2,
-    label: 'OTAs & Wholesalers',
-    title: 'Volume access with seamless API connection',
-    description: 'Built for high-volume operations with robust API infrastructure. Scale your Balkan inventory without infrastructure concerns — our platform handles thousands of requests effortlessly.',
-    features: ['High-volume API access', 'Bulk rate management', 'Real-time availability', 'Automated booking flow'],
-  },
-  {
-    id: 'corporate',
-    icon: Building,
-    label: 'Corporate',
-    title: 'Clean dashboard with special corporate rates',
-    description: 'Streamline business travel with our corporate booking platform. Access negotiated rates, manage policies, and get detailed reporting for finance teams.',
-    features: ['Corporate rate programs', 'Clean booking dashboard', 'Policy management', 'Travel expense reporting'],
-  },
-  {
-    id: 'tech',
-    icon: Code,
-    label: 'Tech Integrators',
-    title: 'API-ready with scalable architecture',
-    description: 'Developer-first approach with comprehensive documentation and a scalable design that grows with your platform. XML and JSON support for maximum flexibility.',
-    features: ['RESTful & SOAP APIs', 'Comprehensive documentation', 'Scalable architecture', '24/7 technical support'],
-  },
-];
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const WhoWeServeSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [activeTab, setActiveTab] = useState('agencies');
+  const { t } = useLanguage();
+
+  const tabs = [
+    {
+      id: 'agencies',
+      icon: Briefcase,
+      label: t('serve.agencies'),
+      title: t('serve.agencies.title'),
+      description: t('serve.agencies.desc'),
+      features: [t('serve.agencies.feature1'), t('serve.agencies.feature2'), t('serve.agencies.feature3'), t('serve.agencies.feature4')],
+    },
+    {
+      id: 'otas',
+      icon: Globe2,
+      label: t('serve.otas'),
+      title: t('serve.otas.title'),
+      description: t('serve.otas.desc'),
+      features: [t('serve.otas.feature1'), t('serve.otas.feature2'), t('serve.otas.feature3'), t('serve.otas.feature4')],
+    },
+    {
+      id: 'corporate',
+      icon: Building,
+      label: t('serve.corporate'),
+      title: t('serve.corporate.title'),
+      description: t('serve.corporate.desc'),
+      features: [t('serve.corporate.feature1'), t('serve.corporate.feature2'), t('serve.corporate.feature3'), t('serve.corporate.feature4')],
+    },
+    {
+      id: 'tech',
+      icon: Code,
+      label: t('serve.tech'),
+      title: t('serve.tech.title'),
+      description: t('serve.tech.desc'),
+      features: [t('serve.tech.feature1'), t('serve.tech.feature2'), t('serve.tech.feature3'), t('serve.tech.feature4')],
+    },
+  ];
 
   const activeContent = tabs.find((tab) => tab.id === activeTab);
 
@@ -58,10 +60,10 @@ const WhoWeServeSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-            <span className="text-gradient">Who We Serve</span>
+            <span className="text-gradient">{t('serve.title')}</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Tailored solutions for every travel business model
+            {t('serve.description')}
           </p>
         </motion.div>
 
