@@ -1,12 +1,15 @@
+import { useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { ArrowRight, Users, Compass } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import PartnerModal from './PartnerModal';
 
 const CTASection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const { t } = useLanguage();
+  const [isPartnerModalOpen, setIsPartnerModalOpen] = useState(false);
 
   return (
     <section id="contact" className="relative py-32 overflow-hidden">
@@ -50,6 +53,7 @@ const CTASection = () => {
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
+              onClick={() => setIsPartnerModalOpen(true)}
               className="btn-glow group w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-accent to-neon-purple text-accent-foreground font-semibold flex items-center justify-center gap-3 glow-cyan"
             >
               <Users size={20} />
@@ -89,6 +93,8 @@ const CTASection = () => {
           </motion.div>
         </motion.div>
       </div>
+      
+      <PartnerModal isOpen={isPartnerModalOpen} onClose={() => setIsPartnerModalOpen(false)} />
     </section>
   );
 };

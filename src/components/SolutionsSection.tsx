@@ -1,7 +1,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { 
-  FileText, 
+  Globe2, 
   Globe, 
   Code2, 
   BadgePercent, 
@@ -21,9 +21,9 @@ const SolutionsSection = () => {
 
   const solutions = [
     {
-      icon: FileText,
-      title: t('solutions.directContracting.title'),
-      description: t('solutions.directContracting.description'),
+      icon: Globe2,
+      title: t('solutions.globalInventory.title'),
+      description: t('solutions.globalInventory.description'),
     },
     {
       icon: Globe,

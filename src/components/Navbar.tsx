@@ -1,13 +1,11 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import LoginModal from './LoginModal';
 import { useLanguage } from '@/contexts/LanguageContext';
 import vasdreamLogo from '@/assets/logos/vasdream-logo.svg';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isLoginOpen, setIsLoginOpen] = useState(false);
   const { language, setLanguage, t } = useLanguage();
 
   const navLinks = [
@@ -75,12 +73,14 @@ const Navbar = () => {
               </div>
 
               {/* Partner Login Button */}
-              <button
-                onClick={() => setIsLoginOpen(true)}
+              <a
+                href="https://booking.vasdream.com/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-glow px-5 py-2.5 rounded-lg bg-gradient-to-r from-neon-cyan/20 to-neon-purple/20 border border-accent/50 text-accent font-medium text-sm"
               >
                 {t('nav.partnerLogin')}
-              </button>
+              </a>
             </div>
 
             {/* Mobile Menu Button */}
@@ -135,23 +135,21 @@ const Navbar = () => {
                       AL
                     </button>
                   </div>
-                  <button
-                    onClick={() => {
-                      setIsMenuOpen(false);
-                      setIsLoginOpen(true);
-                    }}
-                    className="btn-glow w-full py-3 rounded-lg bg-gradient-to-r from-neon-cyan/20 to-neon-purple/20 border border-accent/50 text-accent font-medium"
+                  <a
+                    href="https://booking.vasdream.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="btn-glow w-full py-3 rounded-lg bg-gradient-to-r from-neon-cyan/20 to-neon-purple/20 border border-accent/50 text-accent font-medium text-center block"
                   >
                     {t('nav.partnerLogin')}
-                  </button>
+                  </a>
                 </div>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
       </motion.nav>
-
-      <LoginModal isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
     </>
   );
 };
