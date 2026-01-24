@@ -1,10 +1,12 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import PartnerModal from './PartnerModal';
 
 const HeroSection = () => {
   const { t } = useLanguage();
-  
+  const [isPartnerModalOpen, setIsPartnerModalOpen] = useState(false);
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background layers */}
       <div className="absolute inset-0 bg-background" />
@@ -224,7 +226,10 @@ const HeroSection = () => {
           delay: 0.6,
           duration: 0.8
         }} className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button className="btn-glow group px-8 py-4 rounded-xl bg-gradient-to-r from-accent to-neon-purple text-accent-foreground font-semibold flex items-center gap-2 glow-cyan">
+            <button 
+              onClick={() => setIsPartnerModalOpen(true)}
+              className="btn-glow group px-8 py-4 rounded-xl bg-gradient-to-r from-accent to-neon-purple text-accent-foreground font-semibold flex items-center gap-2 glow-cyan"
+            >
               {t('hero.becomePartner')}
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </button>
@@ -235,6 +240,8 @@ const HeroSection = () => {
         {/* Scroll indicator */}
         
       </div>
+      
+      <PartnerModal isOpen={isPartnerModalOpen} onClose={() => setIsPartnerModalOpen(false)} />
     </section>;
 };
 export default HeroSection;

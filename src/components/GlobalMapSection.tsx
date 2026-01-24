@@ -6,7 +6,6 @@ const offices = [
   { country: 'Albania', city: 'Tirana', flag: '🇦🇱', isHQ: true },
   { country: 'Kosovo', city: 'Pristina', flag: '🇽🇰', isHQ: false },
   { country: 'Bosnia & Herzegovina', city: 'Sarajevo', flag: '🇧🇦', isHQ: false },
-  { country: 'Slovenia', city: 'Ljubljana', flag: '🇸🇮', isHQ: false },
   { country: 'Austria', city: 'Vienna', flag: '🇦🇹', isHQ: false },
   { country: 'UAE', city: 'Dubai', flag: '🇦🇪', isHQ: false },
 ];
@@ -55,7 +54,7 @@ const GlobalMapSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-24"
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-24"
         >
           {offices.map((office, index) => (
             <motion.div
@@ -86,29 +85,47 @@ const GlobalMapSection = () => {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="text-center"
         >
-          <p className="text-sm font-medium text-muted-foreground mb-8 uppercase tracking-wider">
+          <p className="text-sm font-medium text-accent mb-8 uppercase tracking-wider">
             {t('global.trustedBy')}
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-10">
-            {partners.map((partner, index) => (
-              <motion.div
-                key={partner}
-                initial={{ opacity: 0 }}
-                animate={isInView ? { opacity: 1 } : {}}
-                transition={{ duration: 0.5, delay: 0.6 + index * 0.05 }}
-                className="text-lg lg:text-xl font-bold text-muted-foreground/30 hover:text-accent transition-colors cursor-pointer"
-              >
-                {partner}
-              </motion.div>
-            ))}
-            <motion.span
+          <div className="space-y-6">
+            {/* First row - 5 partners */}
+            <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-10">
+              {partners.slice(0, 5).map((partner, index) => (
+                <motion.div
+                  key={partner}
+                  initial={{ opacity: 0 }}
+                  animate={isInView ? { opacity: 1 } : {}}
+                  transition={{ duration: 0.5, delay: 0.6 + index * 0.05 }}
+                  className="text-lg lg:text-xl font-bold text-foreground/70 hover:text-accent hover:drop-shadow-[0_0_8px_hsl(var(--accent))] transition-all duration-300 cursor-pointer"
+                >
+                  {partner}
+                </motion.div>
+              ))}
+            </div>
+            {/* Second row - 5 partners */}
+            <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-10">
+              {partners.slice(5, 10).map((partner, index) => (
+                <motion.div
+                  key={partner}
+                  initial={{ opacity: 0 }}
+                  animate={isInView ? { opacity: 1 } : {}}
+                  transition={{ duration: 0.5, delay: 0.85 + index * 0.05 }}
+                  className="text-lg lg:text-xl font-bold text-foreground/70 hover:text-neon-purple hover:drop-shadow-[0_0_8px_hsl(var(--neon-purple))] transition-all duration-300 cursor-pointer"
+                >
+                  {partner}
+                </motion.div>
+              ))}
+            </div>
+            {/* And many more */}
+            <motion.p
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ duration: 0.5, delay: 1.1 }}
-              className="text-sm text-muted-foreground italic"
+              className="text-sm text-muted-foreground italic pt-2"
             >
               {t('global.andMore')}
-            </motion.span>
+            </motion.p>
           </div>
         </motion.div>
       </div>
