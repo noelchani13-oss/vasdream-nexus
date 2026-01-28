@@ -11,8 +11,8 @@ const Navbar = () => {
   const navLinks = [
     { label: t('nav.about'), href: '#about' },
     { label: t('nav.solutions'), href: '#solutions' },
-    { label: t('nav.connectivity'), href: '#connectivity' },
     { label: t('nav.bedbank'), href: '#bedbank' },
+    { label: t('nav.connectivity'), href: '#connectivity' },
     { label: t('nav.global'), href: '#global' },
     { label: t('nav.contact'), href: '#contact' },
   ];
