@@ -50,18 +50,9 @@ const AboutSection = () => {
             </h2>
 
             <div className="space-y-4 text-muted-foreground leading-relaxed">
-              <p>
-                {t('about.description1')} <span className="text-accent font-semibold">{t('about.description1Highlight')}</span>.
-              </p>
-              <p>
-                {t('about.description2')} <span className="text-accent font-semibold">{t('about.description2Highlight')}</span> {t('about.description2Rest')}
-              </p>
+              <p>{t('about.description1')}</p>
+              <p>{t('about.description2')}</p>
               <p>{t('about.description3')}</p>
-            </div>
-
-            <div className="mt-8 flex items-center gap-4 font-mono text-sm">
-              <span className="px-3 py-1 rounded-md bg-accent/10 text-accent border border-accent/20">{t('about.stat1')}</span>
-              <span className="px-3 py-1 rounded-md bg-neon-purple/10 text-neon-purple border border-neon-purple/20">{t('about.stat2')}</span>
             </div>
           </motion.div>
 
