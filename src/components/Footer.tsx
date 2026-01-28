@@ -3,10 +3,12 @@ import { motion } from 'framer-motion';
 import { Linkedin, Instagram, Mail, MapPin, Send } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import vasdreamLogo from '@/assets/logos/vasdream-logo.svg';
+import PartnerModal from './PartnerModal';
 
 const Footer = () => {
   const { t } = useLanguage();
   const [email, setEmail] = useState('');
+  const [isPartnerModalOpen, setIsPartnerModalOpen] = useState(false);
 
   const handleNewsletterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -99,14 +101,14 @@ const Footer = () => {
             <h4 className="font-semibold text-foreground mb-4">{t('footer.company')}</h4>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                <a href="https://www.linkedin.com/company/vas-group/jobs/" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                   {t('footer.careers')}
                 </a>
               </li>
               <li>
-                <a href="#contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                <button onClick={() => setIsPartnerModalOpen(true)} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                   {t('footer.contact')}
-                </a>
+                </button>
               </li>
             </ul>
 
@@ -181,6 +183,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      
+      <PartnerModal isOpen={isPartnerModalOpen} onClose={() => setIsPartnerModalOpen(false)} />
     </footer>
   );
 };

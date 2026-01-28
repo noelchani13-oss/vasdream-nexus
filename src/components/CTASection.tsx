@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { ArrowRight, Users, Compass } from 'lucide-react';
+import { ArrowRight, Users } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import PartnerModal from './PartnerModal';
 
@@ -59,15 +59,6 @@ const CTASection = () => {
               <Users size={20} />
               {t('cta.becomePartner')}
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </motion.button>
-
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="btn-glow group w-full sm:w-auto px-8 py-4 rounded-xl glass border border-white/20 font-semibold flex items-center justify-center gap-3 hover:border-accent/50 transition-colors"
-            >
-              <Compass size={20} className="text-accent" />
-              {t('cta.explorePlatform')}
             </motion.button>
           </div>
 
