@@ -7,7 +7,7 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
-// QueryClient instance for React Query
+// QueryClient instance for React Query - cache bust v2
 const queryClient = new QueryClient();
 
 const App = () => (
