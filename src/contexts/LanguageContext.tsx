@@ -20,21 +20,21 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.partnerLogin': 'Partner Login',
 
     // Hero
-    'hero.headline': 'Global B2B Travel Wholesaler',
-    'hero.subheadline': '30+ years of trust, local strength, and unbeatable availability in the Western Balkans.',
-    'hero.experience': 'Since 2015, 30+ Years Travel Group Experience',
+    'hero.headline': 'Global OTA & Bedbank',
+    'hero.subheadline': '30+ years of trust, local strength, and unbeatable inventory in the Western Balkans.',
+    'hero.experience': 'B2B Travel Technology Platform',
     'hero.features': 'Direct contracts • Instant booking • 24/7 support',
     'hero.builtFor': 'Built for Travel Agencies, OTAs and DMCs.',
     'hero.becomePartner': 'Become a Partner',
     'hero.readyToConnect': 'Ready to Connect?',
 
     // About
-    'about.badge': "ALBANIA'S LEADING B2B TRAVEL OTA PLATFORM",
+    'about.badge': 'TRUSTED BY TRAVEL PROFESSIONALS WORLDWIDE',
     'about.title1': "Albania's Leading",
     'about.title2': 'B2B Travel OTA Platform',
     'about.description1': 'VasDream is a B2B travel OTA platform built in the Western Balkans, active since 2015 and backed by over 30 years of hands-on travel industry experience.',
     'about.description2': 'Designed for professional buyers, VasDream provides access to global hotel inventory through a single, reliable platform — supporting travel agencies, tour operators, DMCs, and corporate travel sellers worldwide.',
-    'about.description3': 'Our value lies in combining technology with deep regional expertise. With strong local market knowledge, trusted industry relationships, and dedicated support teams, we enable our partners to book confidently, scale efficiently, and access competitive rates across Albania, Montenegro, Greece, and the wider Balkan region — alongside worldwide coverage.',
+    'about.description3': 'Our value lies in combining technology with deep regional expertise. With strong local market knowledge, trusted industry relationships, and dedicated support teams, we enable our partners to book confidently, scale efficiently, and access competitive rates across the world.',
     'about.highlight1.title': 'Since 2015',
     'about.highlight1.desc': 'Operating as a dedicated B2B travel OTA platform',
     'about.highlight2.title': '30+ Years Experience',
@@ -224,21 +224,21 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.partnerLogin': 'Hyrje Partneri',
 
     // Hero
-    'hero.headline': 'Shitës me Shumicë Global B2B për Udhëtime',
-    'hero.subheadline': '30+ vjet besim, forcë lokale dhe disponueshmëri e paarritshme në Ballkanin Perëndimor.',
-    'hero.experience': 'Që nga 2015, 30+ Vjet Përvojë në Grupin e Udhëtimeve',
+    'hero.headline': 'OTA & Bedbank Global',
+    'hero.subheadline': '30+ vjet besim, forcë lokale dhe inventar i paarritshëm në Ballkanin Perëndimor.',
+    'hero.experience': 'Platformë Teknologjike B2B për Udhëtime',
     'hero.features': 'Kontrata direkte • Rezervim i menjëhershëm • Mbështetje 24/7',
     'hero.builtFor': 'Ndërtuar për Agjenci Udhëtimi, OTA dhe DMC.',
     'hero.becomePartner': 'Bëhu Partner',
     'hero.readyToConnect': 'Gati për t\'u Lidhur?',
 
     // About
-    'about.badge': 'PLATFORMA KRYESORE B2B E UDHËTIMEVE OTA NË SHQIPËRI',
+    'about.badge': 'E BESUAR NGA PROFESIONISTËT E UDHËTIMEVE NË MBARË BOTËN',
     'about.title1': 'Platforma Kryesore e Shqipërisë',
     'about.title2': 'B2B Travel OTA',
     'about.description1': 'VasDream është një platformë B2B travel OTA e ndërtuar në Ballkanin Perëndimor, aktive që nga 2015 dhe e mbështetur nga mbi 30 vjet përvojë praktike në industrinë e udhëtimeve.',
     'about.description2': 'E dizajnuar për blerës profesionistë, VasDream ofron qasje në inventar global hotelesh përmes një platforme të vetme dhe të besueshme — duke mbështetur agjencitë e udhëtimit, operatorët turistikë, DMC-të dhe shitësit e udhëtimeve korporative në mbarë botën.',
-    'about.description3': 'Vlera jonë qëndron në kombinimin e teknologjisë me ekspertizën e thellë rajonale. Me njohuri të forta të tregut lokal, marrëdhënie të besuara në industri dhe ekipe mbështetjeje të dedikuara, ne mundësojmë partnerët tanë të rezervojnë me besim, të shkallëzohen me efikasitet dhe të kenë qasje në çmime konkurruese në Shqipëri, Mal të Zi, Greqi dhe rajonin më të gjerë Ballkanik — së bashku me mbulim botëror.',
+    'about.description3': 'Vlera jonë qëndron në kombinimin e teknologjisë me ekspertizën e thellë rajonale. Me njohuri të forta të tregut lokal, marrëdhënie të besuara në industri dhe ekipe mbështetjeje të dedikuara, ne mundësojmë partnerët tanë të rezervojnë me besim, të shkallëzohen me efikasitet dhe të kenë qasje në çmime konkurruese në mbarë botën.',
     'about.highlight1.title': 'Që nga 2015',
     'about.highlight1.desc': 'Operim si platformë e dedikuar B2B travel OTA',
     'about.highlight2.title': '30+ Vjet Përvojë',

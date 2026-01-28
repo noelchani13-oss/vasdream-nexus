@@ -24,11 +24,11 @@ const Index = () => {
         {/* Section C: Solutions */}
         <SolutionsSection />
         
-        {/* Section D: Connectivity */}
-        <ConnectivitySection />
-        
-        {/* Section E: Bedbank (New Feature) */}
+        {/* Section D: Bedbank (New Feature) */}
         <BedbankSection />
+        
+        {/* Section E: Connectivity */}
+        <ConnectivitySection />
         
         {/* Section F: Who We Serve (Tabs) */}
         <WhoWeServeSection />

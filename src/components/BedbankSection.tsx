@@ -2,11 +2,13 @@ import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { Database, Lock, TrendingUp, Building2, ArrowRight, Sparkles, X, CheckCircle2, Globe, Users, Percent } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import PartnerModal from './PartnerModal';
 
 const BedbankSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [showHotelForm, setShowHotelForm] = useState(false);
+  const [isPartnerModalOpen, setIsPartnerModalOpen] = useState(false);
   const [formData, setFormData] = useState({
     hotelName: '',
     contactName: '',
@@ -84,7 +86,10 @@ const BedbankSection = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row items-start gap-4 mb-8">
-              <button className="btn-glow group px-6 py-3 rounded-xl bg-gradient-to-r from-accent to-neon-purple text-accent-foreground font-semibold flex items-center gap-2 glow-cyan">
+              <button 
+                onClick={() => setIsPartnerModalOpen(true)}
+                className="btn-glow group px-6 py-3 rounded-xl bg-gradient-to-r from-accent to-neon-purple text-accent-foreground font-semibold flex items-center gap-2 glow-cyan"
+              >
                 {t('bedbank.getStarted')}
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </button>
@@ -94,10 +99,10 @@ const BedbankSection = () => {
               </span>
             </div>
 
-            {/* Hotel CTA - Enhanced */}
-            <div className="glass rounded-xl p-6 border border-accent/20">
+            {/* Hotel CTA - Enhanced with Purple theme */}
+            <div className="glass rounded-xl p-6 border border-neon-purple/30">
               <h3 className="text-lg font-semibold text-foreground mb-3 flex items-center gap-2">
-                <Building2 size={20} className="text-accent" />
+                <Building2 size={20} className="text-neon-purple" />
                 {t('bedbank.hotelTitle')}
               </h3>
               <p className="text-sm text-muted-foreground mb-4">
@@ -106,14 +111,14 @@ const BedbankSection = () => {
               <ul className="space-y-2 mb-4">
                 {hotelBenefits.map((benefit) => (
                   <li key={benefit.text} className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <benefit.icon size={14} className="text-accent flex-shrink-0" />
+                    <benefit.icon size={14} className="text-neon-purple flex-shrink-0" />
                     <span>{benefit.text}</span>
                   </li>
                 ))}
               </ul>
               <button
                 onClick={() => setShowHotelForm(true)}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-accent/10 border border-accent/30 text-accent text-sm font-medium hover:bg-accent/20 transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-neon-purple/10 border border-neon-purple/30 text-neon-purple text-sm font-medium hover:bg-neon-purple/20 transition-colors"
               >
                 {t('bedbank.startHere')} <ArrowRight size={14} />
               </button>
@@ -255,6 +260,8 @@ const BedbankSection = () => {
           </motion.div>
         </motion.div>
       )}
+      
+      <PartnerModal isOpen={isPartnerModalOpen} onClose={() => setIsPartnerModalOpen(false)} />
     </section>
   );
 };
