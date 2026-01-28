@@ -7,6 +7,7 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
+// QueryClient instance for React Query
 const queryClient = new QueryClient();
 
 const App = () => (
