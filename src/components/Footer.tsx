@@ -116,14 +116,14 @@ const Footer = () => {
             <h4 className="font-semibold text-foreground mb-4 mt-8">{t('footer.legal')}</h4>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                <Link to="/privacy-policy" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                   {t('footer.privacyPolicy')}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                <Link to="/cookies-policy" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                   {t('footer.cookiesPolicy')}
-                </a>
+                </Link>
               </li>
             </ul>
           </motion.div>
