@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Linkedin, Instagram, Mail, MapPin, Send } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import vasdreamLogo from '@/assets/logos/vasdream-logo.svg';
 import PartnerModal from './PartnerModal';
