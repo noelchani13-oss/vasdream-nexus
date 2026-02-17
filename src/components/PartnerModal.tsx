@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Building2, Code2, Send } from 'lucide-react';
+import { X, Building2, Code2, Send, CheckCircle2 } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { supabase } from '@/integrations/supabase/client';
 
 interface PartnerModalProps {
   isOpen: boolean;
@@ -22,15 +23,29 @@ const PartnerModal = ({ isOpen, onClose }: PartnerModalProps) => {
     message: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Partner request:', { partnerType, ...formData });
-    // Handle form submission
-    onClose();
+    setIsSubmitting(true);
+    try {
+      await supabase.functions.invoke('send-form-email', {
+        body: {
+          formType: partnerType === 'agency' ? 'partner-agency' : 'partner-api',
+          data: formData,
+        },
+      });
+    } catch (err) {
+      console.error('Email send error:', err);
+    }
+    setIsSubmitting(false);
+    setIsSubmitted(true);
   };
 
   const handleClose = () => {
     setPartnerType(null);
+    setIsSubmitted(false);
     setFormData({
       companyName: '',
       contactName: '',
@@ -88,7 +103,30 @@ const PartnerModal = ({ isOpen, onClose }: PartnerModalProps) => {
                   </p>
                 </div>
 
-                {!partnerType ? (
+                {isSubmitted ? (
+                  /* Thank You Message */
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="text-center py-8"
+                  >
+                    <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4">
+                      <CheckCircle2 size={32} className="text-accent" />
+                    </div>
+                    <h3 className="text-xl font-bold text-foreground mb-2">
+                      {t('partner.thankYouTitle')}
+                    </h3>
+                    <p className="text-sm text-muted-foreground mb-6">
+                      {t('partner.thankYouDesc')}
+                    </p>
+                    <button
+                      onClick={handleClose}
+                      className="px-6 py-2 rounded-lg glass border border-white/10 text-sm font-medium text-foreground hover:bg-white/10 transition-colors"
+                    >
+                      {t('partner.close')}
+                    </button>
+                  </motion.div>
+                ) : !partnerType ? (
                   /* Partner Type Selection */
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <motion.button
@@ -230,10 +268,11 @@ const PartnerModal = ({ isOpen, onClose }: PartnerModalProps) => {
 
                       <button
                         type="submit"
-                        className="btn-glow w-full py-3.5 rounded-lg bg-gradient-to-r from-accent to-neon-purple text-accent-foreground font-semibold flex items-center justify-center gap-2 glow-cyan"
+                        disabled={isSubmitting}
+                        className="btn-glow w-full py-3.5 rounded-lg bg-gradient-to-r from-accent to-neon-purple text-accent-foreground font-semibold flex items-center justify-center gap-2 glow-cyan disabled:opacity-50"
                       >
                         <Send size={18} />
-                        {t('partner.submit')}
+                        {isSubmitting ? t('partner.submitting') : t('partner.submit')}
                       </button>
                     </form>
                   </motion.div>
