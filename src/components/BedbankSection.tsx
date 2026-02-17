@@ -2,6 +2,7 @@ import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { Database, Lock, TrendingUp, Building2, ArrowRight, Sparkles, X, CheckCircle2, Globe, Users, Percent } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { supabase } from '@/integrations/supabase/client';
 import PartnerModal from './PartnerModal';
 
 const BedbankSection = () => {
@@ -33,11 +34,24 @@ const BedbankSection = () => {
     { icon: CheckCircle2, text: t('bedbank.hotelBenefit4') },
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isHotelSubmitted, setIsHotelSubmitted] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert('Thank you! Our representatives will contact you shortly.');
-    setShowHotelForm(false);
-    setFormData({ hotelName: '', contactName: '', email: '', phone: '', location: '', rooms: '' });
+    setIsSubmitting(true);
+    try {
+      await supabase.functions.invoke('send-form-email', {
+        body: {
+          formType: 'hotel',
+          data: formData,
+        },
+      });
+    } catch (err) {
+      console.error('Email send error:', err);
+    }
+    setIsSubmitting(false);
+    setIsHotelSubmitted(true);
   };
 
   return (
@@ -165,7 +179,7 @@ const BedbankSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-sm"
-          onClick={() => setShowHotelForm(false)}
+          onClick={() => { setShowHotelForm(false); setIsHotelSubmitted(false); }}
         >
           <motion.div
             initial={{ scale: 0.95, opacity: 0 }}
@@ -173,90 +187,113 @@ const BedbankSection = () => {
             className="w-full max-w-md glass-strong rounded-2xl p-6 border border-white/10"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="text-xl font-bold text-foreground">{t('bedbank.formTitle')}</h3>
-              <button
-                onClick={() => setShowHotelForm(false)}
-                className="p-2 rounded-lg hover:bg-white/10 transition-colors"
-              >
-                <X size={20} className="text-muted-foreground" />
-              </button>
-            </div>
+            {isHotelSubmitted ? (
+              <div className="text-center py-8">
+                <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4">
+                  <CheckCircle2 size={32} className="text-accent" />
+                </div>
+                <h3 className="text-xl font-bold text-foreground mb-2">
+                  {t('partner.thankYouTitle')}
+                </h3>
+                <p className="text-sm text-muted-foreground mb-6">
+                  {t('partner.thankYouDesc')}
+                </p>
+                <button
+                  onClick={() => { setShowHotelForm(false); setIsHotelSubmitted(false); setFormData({ hotelName: '', contactName: '', email: '', phone: '', location: '', rooms: '' }); }}
+                  className="px-6 py-2 rounded-lg glass border border-white/10 text-sm font-medium text-foreground hover:bg-white/10 transition-colors"
+                >
+                  {t('partner.close')}
+                </button>
+              </div>
+            ) : (
+              <>
+                <div className="flex items-center justify-between mb-6">
+                  <h3 className="text-xl font-bold text-foreground">{t('bedbank.formTitle')}</h3>
+                  <button
+                    onClick={() => setShowHotelForm(false)}
+                    className="p-2 rounded-lg hover:bg-white/10 transition-colors"
+                  >
+                    <X size={20} className="text-muted-foreground" />
+                  </button>
+                </div>
 
-            <p className="text-sm text-muted-foreground mb-6">
-              {t('bedbank.formDesc')}
-            </p>
+                <p className="text-sm text-muted-foreground mb-6">
+                  {t('bedbank.formDesc')}
+                </p>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-1">{t('bedbank.formHotelName')} *</label>
-                <input
-                  type="text"
-                  required
-                  value={formData.hotelName}
-                  onChange={(e) => setFormData({ ...formData, hotelName: e.target.value })}
-                  className="w-full px-4 py-2 rounded-lg bg-muted border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent/50"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-1">{t('bedbank.formContactName')} *</label>
-                <input
-                  type="text"
-                  required
-                  value={formData.contactName}
-                  onChange={(e) => setFormData({ ...formData, contactName: e.target.value })}
-                  className="w-full px-4 py-2 rounded-lg bg-muted border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent/50"
-                />
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-1">{t('bedbank.formEmail')} *</label>
-                  <input
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-2 rounded-lg bg-muted border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent/50"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-1">{t('bedbank.formPhone')}</label>
-                  <input
-                    type="tel"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-4 py-2 rounded-lg bg-muted border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent/50"
-                  />
-                </div>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-1">{t('bedbank.formLocation')} *</label>
-                  <input
-                    type="text"
-                    required
-                    value={formData.location}
-                    onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                    className="w-full px-4 py-2 rounded-lg bg-muted border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent/50"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-1">{t('bedbank.formRooms')}</label>
-                  <input
-                    type="number"
-                    value={formData.rooms}
-                    onChange={(e) => setFormData({ ...formData, rooms: e.target.value })}
-                    className="w-full px-4 py-2 rounded-lg bg-muted border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent/50"
-                  />
-                </div>
-              </div>
-              <button
-                type="submit"
-                className="w-full btn-glow py-3 rounded-xl bg-gradient-to-r from-accent to-neon-purple text-accent-foreground font-semibold"
-              >
-                {t('bedbank.formSubmit')}
-              </button>
-            </form>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-1">{t('bedbank.formHotelName')} *</label>
+                    <input
+                      type="text"
+                      required
+                      value={formData.hotelName}
+                      onChange={(e) => setFormData({ ...formData, hotelName: e.target.value })}
+                      className="w-full px-4 py-2 rounded-lg bg-muted border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent/50"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-1">{t('bedbank.formContactName')} *</label>
+                    <input
+                      type="text"
+                      required
+                      value={formData.contactName}
+                      onChange={(e) => setFormData({ ...formData, contactName: e.target.value })}
+                      className="w-full px-4 py-2 rounded-lg bg-muted border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent/50"
+                    />
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-foreground mb-1">{t('bedbank.formEmail')} *</label>
+                      <input
+                        type="email"
+                        required
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className="w-full px-4 py-2 rounded-lg bg-muted border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent/50"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-foreground mb-1">{t('bedbank.formPhone')}</label>
+                      <input
+                        type="tel"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        className="w-full px-4 py-2 rounded-lg bg-muted border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent/50"
+                      />
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-foreground mb-1">{t('bedbank.formLocation')} *</label>
+                      <input
+                        type="text"
+                        required
+                        value={formData.location}
+                        onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+                        className="w-full px-4 py-2 rounded-lg bg-muted border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent/50"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-foreground mb-1">{t('bedbank.formRooms')}</label>
+                      <input
+                        type="number"
+                        value={formData.rooms}
+                        onChange={(e) => setFormData({ ...formData, rooms: e.target.value })}
+                        className="w-full px-4 py-2 rounded-lg bg-muted border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent/50"
+                      />
+                    </div>
+                  </div>
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full btn-glow py-3 rounded-xl bg-gradient-to-r from-accent to-neon-purple text-accent-foreground font-semibold disabled:opacity-50"
+                  >
+                    {isSubmitting ? t('partner.submitting') : t('bedbank.formSubmit')}
+                  </button>
+                </form>
+              </>
+            )}
           </motion.div>
         </motion.div>
       )}

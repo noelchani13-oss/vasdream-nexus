@@ -162,6 +162,12 @@ const translations: Record<Language, Record<string, string>> = {
     // Testimonials
     'testimonials.title': 'What Partners Say',
 
+    // Buyers Network
+    'buyers.badge': 'GROWING NETWORK',
+    'buyers.title': 'Our Expanding Network of Buyers',
+    'buyers.description': 'Trusted by leading travel companies worldwide who rely on VasDream for quality hotel inventory and competitive rates.',
+    'buyers.andGrowing': '...and our network keeps growing every month.',
+
     // CTA
     'cta.title': 'Ready to Connect?',
     'cta.description': 'Join 1000+ partners who rely on VasDream for trusted hotel supply, with instant booking and unbeatable service.',
@@ -203,6 +209,10 @@ const translations: Record<Language, Record<string, string>> = {
     'partner.website': 'Website',
     'partner.message': 'Message (Optional)',
     'partner.submit': 'Submit Request',
+    'partner.submitting': 'Submitting...',
+    'partner.thankYouTitle': 'Thank You!',
+    'partner.thankYouDesc': 'Your request has been received. Our team will contact you shortly.',
+    'partner.close': 'Close',
 
     // Login Modal
     'login.title': 'Partner Login',
@@ -427,6 +437,12 @@ const translations: Record<Language, Record<string, string>> = {
     // Testimonials
     'testimonials.title': 'Çfarë Thonë Partnerët',
 
+    // Buyers Network
+    'buyers.badge': 'RRJET NË RRITJE',
+    'buyers.title': 'Rrjeti Ynë në Zgjerim i Blerësve',
+    'buyers.description': 'I besuar nga kompani udhëtimi kryesore në mbarë botën që mbështeten te VasDream për inventar cilësor hotelesh dhe çmime konkurruese.',
+    'buyers.andGrowing': '...dhe rrjeti ynë vazhdon të rritet çdo muaj.',
+
     // CTA
     'cta.title': 'Gati për t\'u Lidhur?',
     'cta.description': 'Bashkohuni me 1000+ partnerë që mbështeten te VasDream për furnizim të besuar hotelesh, me rezervim të menjëhershëm dhe shërbim të paarritshëm.',
@@ -468,6 +484,10 @@ const translations: Record<Language, Record<string, string>> = {
     'partner.website': 'Faqja e Internetit',
     'partner.message': 'Mesazh (Opsional)',
     'partner.submit': 'Dorëzoni Kërkesën',
+    'partner.submitting': 'Duke dorëzuar...',
+    'partner.thankYouTitle': 'Faleminderit!',
+    'partner.thankYouDesc': 'Kërkesa juaj është marrë. Ekipi ynë do t\'ju kontaktojë së shpejti.',
+    'partner.close': 'Mbyll',
 
     // Login Modal
     'login.title': 'Hyrje Partneri',
