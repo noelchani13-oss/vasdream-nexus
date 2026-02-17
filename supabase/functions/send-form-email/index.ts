@@ -21,8 +21,10 @@ serve(async (req) => {
 
     let subject = '';
     let htmlBody = '';
+    let recipientEmail = '';
 
     if (formType === 'partner-agency') {
+      recipientEmail = 'b2b@vasdream.com';
       subject = `New Partner Request (Travel Agency) - ${data.companyName}`;
       htmlBody = `
         <h2>New Travel Agency Partner Request</h2>
@@ -34,6 +36,7 @@ serve(async (req) => {
         <p><strong>Message:</strong> ${data.message || 'N/A'}</p>
       `;
     } else if (formType === 'partner-api') {
+      recipientEmail = 'project@vasgroup.net';
       subject = `New Partner Request (API Integration) - ${data.companyName}`;
       htmlBody = `
         <h2>New API Integration Partner Request</h2>
@@ -45,6 +48,7 @@ serve(async (req) => {
         <p><strong>Message:</strong> ${data.message || 'N/A'}</p>
       `;
     } else if (formType === 'hotel') {
+      recipientEmail = 'project@vasgroup.net';
       subject = `New Hotel Listing Request - ${data.hotelName}`;
       htmlBody = `
         <h2>New Hotel Listing Request</h2>
@@ -67,7 +71,7 @@ serve(async (req) => {
       },
       body: JSON.stringify({
         from: 'VasDream Website <onboarding@resend.dev>',
-        to: ['project@vasgroup.net'],
+        to: [recipientEmail],
         subject,
         html: htmlBody,
       }),
