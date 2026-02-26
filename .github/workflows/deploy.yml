@@ -41,7 +41,7 @@ jobs:
           SOURCE_DIR: 'dist'
       
       - name: Invalidate CloudFront (optional)
-        if: secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID != ''
+        if: ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID != '' }}
         uses: chetan/invalidate-cloudfront-action@v2
         env:
           DISTRIBUTION: ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }}
