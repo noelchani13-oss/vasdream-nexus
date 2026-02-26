@@ -13,23 +13,9 @@ const HeroSection = () => {
       <div className="absolute inset-0 grid-pattern" />
       <div className="absolute inset-0 mesh-gradient opacity-60" />
 
-      {/* Animated orbs */}
-      <motion.div animate={{
-      scale: [1, 1.2, 1],
-      opacity: [0.3, 0.5, 0.3]
-    }} transition={{
-      duration: 8,
-      repeat: Infinity,
-      ease: 'easeInOut'
-    }} className="absolute top-1/4 left-1/4 w-96 h-96 bg-neon-purple/20 rounded-full blur-3xl" />
-      <motion.div animate={{
-      scale: [1.2, 1, 1.2],
-      opacity: [0.2, 0.4, 0.2]
-    }} transition={{
-      duration: 10,
-      repeat: Infinity,
-      ease: 'easeInOut'
-    }} className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/15 rounded-full blur-3xl" />
+      {/* Animated orbs - pure CSS for performance */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-neon-purple/20 rounded-full blur-3xl animate-orb-slow" />
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/15 rounded-full blur-3xl animate-orb-slower" />
 
       {/* 3D Network visualization */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">

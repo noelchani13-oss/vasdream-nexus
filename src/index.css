@@ -197,3 +197,23 @@
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+
+@keyframes orb-slow {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.2); opacity: 0.5; }
+}
+
+@keyframes orb-slower {
+  0%, 100% { transform: scale(1.2); opacity: 0.2; }
+  50% { transform: scale(1); opacity: 0.4; }
+}
+
+.animate-orb-slow {
+  animation: orb-slow 8s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-orb-slower {
+  animation: orb-slower 10s ease-in-out infinite;
+  will-change: transform, opacity;
+}
